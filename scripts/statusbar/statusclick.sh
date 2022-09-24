@@ -3,9 +3,9 @@
 DIR=$(dirname ${BASH_SOURCE[0]})
 
 case $BLOCK_STATUS in
-	0) $DIR/statusbutton_click ;;
+	0) $DIR/powerbutton_click ;;
 	1) $DIR/clock_click ;;
-	2) $DIR/mem_click ;;
+	2) $DIR/startbutton_click ;;
 	3) $DIR/bluetooth_click ;;
 	4) $DIR/sysupdates_click ;;
 	6) $DIR/backlight_click ;;

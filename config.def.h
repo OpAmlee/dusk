@@ -37,7 +37,7 @@ static unsigned int attachdefault        = AttachAside; // AttachMaster, AttachA
 
 static const int initshowbar             = 1;   /* 0 means no bar */
 
-static const int bar_height              = 0;   /* 0 means derive from font, >= 1 explicit height */
+static const int bar_height              = 30;   /* 0 means derive from font, >= 1 explicit height */
 static const int vertpad                 = borderpx;  /* vertical (outer) padding of bar */
 static const int sidepad                 = borderpx;  /* horizontal (outer) padding of bar */
 
@@ -324,7 +324,7 @@ static const char *spcmd_a[] = {"a", "kitty", "--name", "spfm (a)", "--config","
 //static const char *spcmd_a[] = {"a", "st"    , "-n",     "spfm (a)" , "-g", "144x41", "-e", "ranger", NULL };
 //static const char *spcmd_a[] = {"a", "kitty"    , "--name","spfm (a)","-e","ranger", NULL };
 
-static const char *statusclickcmd[] = { NULL, "scripts/statusclick.sh", NULL };
+static const char *statusclickcmd[] = { NULL, "/home/trg/.config/dusk/scripts/statusbar/statusclick.sh", NULL };
 
 static const char *clientmenu[] = { NULL, "scripts/menu/client", NULL };
 

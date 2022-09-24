@@ -1,6 +1,6 @@
 #!/bin/sh
 #COLOR=^c#FFF7D4^
-TIME=" $(date +'%I%M%P')"
+TIME="$(date +'%I%M%P')"
 #echo "${COLOR}${TIME}"
 
 echo "${TIME} "

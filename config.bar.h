@@ -81,14 +81,17 @@ static const BarDef bars[] = {
 #define PWRL PwrlForwardSlash
 static const BarRule barrules[] = {
 /*mon bar scheme  lpad rpad value  alignment              sizefunc                 drawfunc                 clickfunc                hoverfunc            name */
-//{ -1, 0, 0,         0, 0, 0, BAR_ALIGN_LEFT,   size_powerline,   draw_powerline,   NULL,             NULL, "powerline join" },
+{  0, 0, StatusTwo,   5, 5, 2,    BAR_ALIGN_LEFT,  size_status,      draw_status,      click_status,     NULL,  "statustwo" },
+{  0, 0, 0,         0, 0, PWRL, BAR_ALIGN_LEFT,  size_powerline,   draw_powerline,   NULL,             NULL,  "powerline join" },
 
 { -1, 0, 0,         0, 0, PWRL, BAR_ALIGN_LEFT,   size_workspaces,  draw_workspaces,  click_workspaces, hover_workspaces,  "workspaces" },
 
 {  0, 0, 0,         0, 0, PWRL, BAR_ALIGN_LEFT,   size_powerline,   draw_powerline,   NULL,             NULL,  "powerline join" },
 
-{ -1, 0, 0,         0, 0, PWRL, BAR_ALIGN_LEFT,   size_powerline,   draw_powerline,   NULL,             NULL,  "powerline join" },
+    
 { -1, 0, SchemeWsVisible,   5, 0, 0,    BAR_ALIGN_LEFT,   size_ltsymbol,    draw_ltsymbol,    click_ltsymbol,   NULL,  "layout" },
+{ -1, 0, 0,         0, 0, PWRL, BAR_ALIGN_LEFT,  size_powerline,   draw_powerline,   NULL,             NULL,  "powerline join" },
+
 {  0, 0, StatusZero,   5, 5, 0,    BAR_ALIGN_LEFT,   size_status,      draw_status,      click_status,     NULL,  "statuszero" },
 { -1, 0, 0,         0, 0, PWRL, BAR_ALIGN_LEFT,   size_powerline,   draw_powerline,   NULL,             NULL,  "powerline join" },
 
@@ -97,8 +100,6 @@ static const BarRule barrules[] = {
 { -1, 0, StatusOne, 0, 4, 1,    BAR_ALIGN_LEFT,  size_status,      draw_status,      click_status,     NULL,  "statusone" },
 { -1, 0, 0,         0, 0, PWRL, BAR_ALIGN_LEFT,  size_powerline,   draw_powerline,   NULL,             NULL,  "powerline join" },
 
-{  0, 0, StatusTwo,   5, 5, 2,    BAR_ALIGN_RIGHT,  size_status,      draw_status,      click_status,     NULL,  "statustwo" },
-{  0, 0, 0,         0, 0, PWRL, BAR_ALIGN_RIGHT,  size_powerline,   draw_powerline,   NULL,             NULL,  "powerline join" },
 
 {  0, 0, StatusThree, 5, 5, 3,    BAR_ALIGN_RIGHT,  size_status,      draw_status,      click_status,     NULL,  "statusthree" },
 {  0, 0, 0,         0, 0, PWRL, BAR_ALIGN_RIGHT,  size_powerline,   draw_powerline,   NULL,             NULL,  "powerline join" },
@@ -208,25 +209,25 @@ static const int enablegaps  = 1;    /* whether gaps are enabled by default or n
 /* layout(s) */
 static const Layout layouts[] = {
 	/*     symbol       arrange function, {nmaster, nstack, layout,                master axis,         stack axis,          2nd axis,     symbol    func } */
-	/*00*/{ "[]=",      flextile,         { -1,     -1, SPLIT_VERTICAL,            TOP_TO_BOTTOM,       TOP_TO_BOTTOM,            0,        NULL } }, // default tile layout
-	/*01*/{ "|||",      flextile,         { -1,     -1, NO_SPLIT,                  LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // columns
-	/*02*/{ "===",      flextile,         { -1,     -1, NO_SPLIT,                  TOP_TO_BOTTOM,       TOP_TO_BOTTOM,            0,        NULL } }, // rows
-	/*03*/{ "[M]",      flextile,         { -1,     -1, NO_SPLIT,                  MONOCLE,             MONOCLE,                  0,        NULL } }, // monocle
-	/*04*/{ "||=",      flextile,         { -1,     -1, SPLIT_VERTICAL,            LEFT_TO_RIGHT,       TOP_TO_BOTTOM,            0,        NULL } }, // columns (col) layout
-	/*05*/{ ">M>",      flextile,         { -1,     -1, FLOATING_MASTER,           LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // floating master
-	/*06*/{ "[D]",      flextile,         { -1,     -1, SPLIT_VERTICAL,            TOP_TO_BOTTOM,       MONOCLE,                  0,        NULL } }, // deck
-	/*07*/{ "TTT",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // bstack
-	/*08*/{ "===",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          LEFT_TO_RIGHT,       TOP_TO_BOTTOM,            0,        NULL } }, // bstackhoriz
-	/*09*/{ "==#",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          TOP_TO_BOTTOM,       GAPPLESSGRID_CFACTS,      0,        NULL } }, // bstackgrid
+	/*00*/{ " []=",      flextile,         { -1,     -1, SPLIT_VERTICAL,            TOP_TO_BOTTOM,       TOP_TO_BOTTOM,            0,        NULL } }, // default tile layout
+	/*01*/{ " |||",      flextile,         { -1,     -1, NO_SPLIT,                  LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // columns
+	/*02*/{ " ===",      flextile,         { -1,     -1, NO_SPLIT,                  TOP_TO_BOTTOM,       TOP_TO_BOTTOM,            0,        NULL } }, // rows
+	/*03*/{ " [M]",      flextile,         { -1,     -1, NO_SPLIT,                  MONOCLE,             MONOCLE,                  0,        NULL } }, // monocle
+	/*04*/{ " ||=",      flextile,         { -1,     -1, SPLIT_VERTICAL,            LEFT_TO_RIGHT,       TOP_TO_BOTTOM,            0,        NULL } }, // columns (col) layout
+	/*05*/{ " >M>",      flextile,         { -1,     -1, FLOATING_MASTER,           LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // floating master
+	/*06*/{ " [D]",      flextile,         { -1,     -1, SPLIT_VERTICAL,            TOP_TO_BOTTOM,       MONOCLE,                  0,        NULL } }, // deck
+	/*07*/{ " TTT",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // bstack
+	/*08*/{ " ===",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          LEFT_TO_RIGHT,       TOP_TO_BOTTOM,            0,        NULL } }, // bstackhoriz
+	/*09*/{ " ==#",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          TOP_TO_BOTTOM,       GAPPLESSGRID_CFACTS,      0,        NULL } }, // bstackgrid
 
-	/*10*/{ "|M|",      flextile,         { -1,     -1, SPLIT_CENTERED_VERTICAL,   LEFT_TO_RIGHT,       TOP_TO_BOTTOM, TOP_TO_BOTTOM,       NULL } }, // centeredmaster
-	/*11*/{ "-M-",      flextile,         { -1,     -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM,       LEFT_TO_RIGHT, LEFT_TO_RIGHT,       NULL } }, // centeredmaster horiz
+	/*10*/{ " |M|",      flextile,         { -1,     -1, SPLIT_CENTERED_VERTICAL,   LEFT_TO_RIGHT,       TOP_TO_BOTTOM, TOP_TO_BOTTOM,       NULL } }, // centeredmaster
+	/*11*/{ " -M-",      flextile,         { -1,     -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM,       LEFT_TO_RIGHT, LEFT_TO_RIGHT,       NULL } }, // centeredmaster horiz
 
-	/*12*/{ ":::",      flextile,         { -1,     -1, NO_SPLIT,                  GAPPLESSGRID_CFACTS, GAPPLESSGRID_CFACTS,      0,        NULL } }, // gappless grid
-	/*13*/{ "[\\]",     flextile,         { -1,     -1, NO_SPLIT,                  DWINDLE_CFACTS,      DWINDLE_CFACTS,           0,        NULL } }, // fibonacci dwindle
-	/*14*/{ "(@)",      flextile,         { -1,     -1, NO_SPLIT,                  SPIRAL_CFACTS,       SPIRAL_CFACTS,            0,        NULL } }, // fibonacci spiral
-	/*15*/{ "[T]",      flextile,         { -1,     -1, SPLIT_VERTICAL,            LEFT_TO_RIGHT,       TATAMI_CFACTS,            0,        NULL } }, // tatami mats
-    /*16*/{ "><>",      NULL,             {0} },    /* no layout function means floating behavior */
+	/*12*/{ " :::",      flextile,         { -1,     -1, NO_SPLIT,                  GAPPLESSGRID_CFACTS, GAPPLESSGRID_CFACTS,      0,        NULL } }, // gappless grid
+	/*13*/{ " [\\]",     flextile,         { -1,     -1, NO_SPLIT,                  DWINDLE_CFACTS,      DWINDLE_CFACTS,           0,        NULL } }, // fibonacci dwindle
+	/*14*/{ " (@)",      flextile,         { -1,     -1, NO_SPLIT,                  SPIRAL_CFACTS,       SPIRAL_CFACTS,            0,        NULL } }, // fibonacci spiral
+	/*15*/{ " [T]",      flextile,         { -1,     -1, SPLIT_VERTICAL,            LEFT_TO_RIGHT,       TATAMI_CFACTS,            0,        NULL } }, // tatami mats
+    /*16*/{ " ><>",      NULL,             {0} },    /* no layout function means floating behavior */
 	/*17*/{ NULL,       NULL,             {0} },    /* end of layouts marker for cyclelayouts */
 };
 

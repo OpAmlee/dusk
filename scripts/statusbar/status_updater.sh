@@ -31,10 +31,10 @@ while true; do
 
 #	$SETSTATUS 5 "$($DIR/bandwidth2)" &
 #	$SETSTATUS 3 "$($DIR/cpu)" &
-	$SETSTATUS 6 "$($DIR/status/bar/backlight)" &
+#	$SETSTATUS 6 "$($DIR/status/bar/backlight)" &
 #   $SETSTATUS 6 "$($DIR/battery2)" &
     #$SETSTATUS 5 "$($DIR/i3-blocks-bat)" & 
-    $SETSTATUS 3 "$($DIR/statusbar/bluetooth)" &
+#    $SETSTATUS 3 "$($DIR/statusbar/bluetooth)" &
 #	if [ $((secs % 60)) = 0 ]; then
 #	#	$SETSTATUS 5 "$($DIR/mouse_battery)" &
 #		$SETSTATUS 5 "$($DIR/volume1)" &
@@ -43,8 +43,8 @@ while true; do
 
 	if [ $((secs % 3600)) = 0 ]; then
 #	    $SETSTATUS 4 "$($DIR/sysupdates)" &
-
-		$SETSTATUS 0 "$($DIR/statusbar/statusbutton)" &
+        $SETSTATUS 2 "$($DIR/startbutton)" &
+		$SETSTATUS 0 "$($DIR/powerbutton)" &
 	fi
 
     ((secs+=1))
