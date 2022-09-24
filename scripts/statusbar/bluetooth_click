@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DIR=$(dirname ${BASH_SOURCE[0]})
+
+case $BLOCK_BUTTON in
+	1) blueman-manager & ;;
+	8) subl $DIR/statusbutton ;;
+	9) subl $DIR/statusbutton_click ;;
+	*) notify-send -t 1000 "bluetooth $BLOCK_BUTTON" & ;;
+
+esac

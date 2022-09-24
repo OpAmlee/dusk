@@ -1,0 +1,14 @@
+#!/bin/sh
+
+DIR=$(dirname ${BASH_SOURCE[0]})
+
+case $BLOCK_BUTTON in
+#	1) notify-send  -t 3000 "$(pactl info | awk '/Default Sink/ { print $NF }')" & ;;
+#	2) $HOME/bin/pulse/pulseaudio_toggle_mute_all.sh & ;;
+#	3) notify-send  -t 2000 "vol 3" & ;;
+	1) pactl set-sink-mute 0 toggle ;;
+	3) $HOME/bin/pulse/pulseaudio_decrease_output_volume.sh & ;;
+	8) subl $DIR/volume ;;
+	9) subl $DIR/volume_click ;;
+	*) notify-send -t 2000 "vol $BLOCK_BUTTON" & ;;
+esac

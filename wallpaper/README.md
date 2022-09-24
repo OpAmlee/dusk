@@ -1,0 +1,1 @@
+# wallpapers should be jpeg
