@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DIR=$(dirname ${BASH_SOURCE[0]})
+
+case $BLOCK_BUTTON in
+	1) /home/trg/.config/dusk/scripts/menu/system & ;;
+	3) archlinux-logout & ;;
+	8) subl $DIR/startbutton ;;
+	9) subl $DIR/startbutton_click ;;
+	*) notify-send -t 1000 "startbutton $BLOCK_BUTTON" & ;;
+
+esac

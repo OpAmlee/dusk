@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 DIR=$(dirname ${BASH_SOURCE[0]})
@@ -21,33 +20,29 @@ secs=0
 
 while true; do
 
-	$SETSTATUS 1 "$($DIR/clock)" &
-     
+	$SETSTATUS 1 "$($DIR/clock)"
 
 	if [ $? != 0 ]; then
 		echo "Failed to set status, bailing"
 		exit
 	fi
 
-#	$SETSTATUS 5 "$($DIR/bandwidth2)" &
+#	$SETSTATUS 2 "$($DIR/mem)" &
 #	$SETSTATUS 3 "$($DIR/cpu)" &
-#	$SETSTATUS 6 "$($DIR/status/bar/backlight)" &
-#   $SETSTATUS 6 "$($DIR/battery2)" &
-    #$SETSTATUS 5 "$($DIR/i3-blocks-bat)" & 
-#    $SETSTATUS 3 "$($DIR/statusbar/bluetooth)" &
-#	if [ $((secs % 60)) = 0 ]; then
-#	#	$SETSTATUS 5 "$($DIR/mouse_battery)" &
-#		$SETSTATUS 5 "$($DIR/volume1)" &
-#		#$SETSTATUS 9 "$($DIR/kblayout)" &
-#	fi
+	$SETSTATUS 6 "$($DIR/backlight)" &
+  #  $SETSTATUS 6 "$($DIR/battery2)" &
+
+	if [ $((secs % 60)) = 0 ]; then
+	#	$SETSTATUS 5 "$($DIR/mouse_battery)" &
+		$SETSTATUS 7 "$($DIR/volume1)" &
+		#$SETSTATUS 9 "$($DIR/kblayout)" &
+	fi
 
 	if [ $((secs % 3600)) = 0 ]; then
 #	    $SETSTATUS 4 "$($DIR/sysupdates)" &
-        $SETSTATUS 2 "$($DIR/startbutton)" &
-		#$SETSTATUS 0 "$($DIR/powerbutton)" &
+		$SETSTATUS 0 "$($DIR/statusbutton)" &
 	fi
-
-    ((secs+=1))
+# 6 4 3 2 1 0 
+	((secs+=1))
 	sleep 1
 done
-

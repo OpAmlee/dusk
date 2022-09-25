@@ -37,7 +37,7 @@ static unsigned int attachdefault        = AttachAside; // AttachMaster, AttachA
 
 static const int initshowbar             = 1;   /* 0 means no bar */
 
-static const int bar_height              = 30;   /* 0 means derive from font, >= 1 explicit height */
+static const int bar_height              = 0;   /* 0 means derive from font, >= 1 explicit height */
 static const int vertpad                 = borderpx;  /* vertical (outer) padding of bar */
 static const int sidepad                 = borderpx;  /* horizontal (outer) padding of bar */
 
@@ -326,9 +326,13 @@ static const char *spcmd_a[] = {"a", "kitty", "--name", "spfm (a)", "--config","
 
 static const char *statusclickcmd[] = { NULL, "/home/trg/.config/dusk/scripts/statusbar/statusclick.sh", NULL };
 
-static const char *clientmenu[] = { NULL, "scripts/menu/client", NULL };
+static const char *clientmenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/client", NULL };
 
-static const char *rootmenu[] = { NULL, "scripts/menu/root", NULL };
+static const char *layoutmenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/layout", NULL };
+
+static const char *settingsmenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/settings", NULL };
+
+static const char *rootmenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/root", NULL };
 /*  }}} */
 
 /* Keybinds {{{1 */
@@ -549,7 +553,9 @@ static Button buttons[] = {
 
     { ClkClientWin,     MODKEY|Alt,                       Button3,        spawn,            {.v = clientmenu } },
     /* click                     event mask               button          function          argument */
-	{ ClkLtSymbol,               0,                       Button4,        setlayout,        {0} }, // toggles between current and previous layout
+    { ClkLtSymbol,               0,                       Button3,        spawn,            {.v = layoutmenu } },
+	
+    { ClkLtSymbol,               0,                       Button4,        setlayout,        {0} }, // toggles between current and previous layout
 	{ ClkLtSymbol,               0,                       Button1,        cyclelayout,      {.i = +1 } }, // cycle through the available layouts
 	{ ClkLtSymbol,               0,                       Button5,        cyclelayout,      {.i = -1 } }, // cycle through the available layouts (in reverse)
 	{ ClkWinTitle,               0,                       Button1,        focuswin,         {0} }, // focus on the given client
