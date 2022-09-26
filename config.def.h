@@ -330,7 +330,7 @@ static const char *clientmenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/c
 
 static const char *layoutmenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/layout", NULL };
 
-static const char *settingsmenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/settings", NULL };
+static const char *powermenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/power", NULL };
 
 static const char *rootmenu[] = { NULL, "/home/trg/.config/dusk/scripts/menu/root", NULL };
 /*  }}} */
@@ -554,6 +554,8 @@ static Button buttons[] = {
     { ClkClientWin,     MODKEY|Alt,                       Button3,        spawn,            {.v = clientmenu } },
     /* click                     event mask               button          function          argument */
     { ClkLtSymbol,               0,                       Button3,        spawn,            {.v = layoutmenu } },
+
+    { ClkPower,                  0,                       Button3,        spawn,            {.v = powermenu } },
 	
     { ClkLtSymbol,               0,                       Button4,        setlayout,        {0} }, // toggles between current and previous layout
 	{ ClkLtSymbol,               0,                       Button1,        cyclelayout,      {.i = +1 } }, // cycle through the available layouts
@@ -562,7 +564,7 @@ static Button buttons[] = {
 	{ ClkWinTitle,               0,                       Button3,        showhideclient,   {0} }, // hide the currently selected client (or show if hidden)
 	{ ClkWinTitle,               0,                       Button2,        zoom,             {0} }, // moves the currently focused window to/from the master area (for tiled layouts)
 	{ ClkStatusText,             0,                       Button1,        statusclick,      {.i = 1 } }, // sends mouse button presses to statusclick script when clicking on status modules
-	{ ClkStatusText,             0,                       Button2,        statusclick,      {.i = 2 } },
+	{ ClkStatusText,             0,                       Button8,        statusclick,      {.i = 2 } },
 	{ ClkStatusText,             0,                       Button3,        statusclick,      {.i = 3 } },
 	{ ClkStatusText,             0,                       Button4,        statusclick,      {.i = 4 } },
 	{ ClkStatusText,             0,                       Button5,        statusclick,      {.i = 5 } },
