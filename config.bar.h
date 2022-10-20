@@ -174,13 +174,29 @@ static const WorkspaceRule wsrules[] = {
  |==================================================|     default,         visible,    selected,    occupied, def,  vac,     occ, */
     {  "1",   0,    0,    3,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "1",   "",   "1", },
 	{  "2",   0,    0,    3,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "2",   "",   "2", },
-    {  "3",   0,    0,    9,   -1,    1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "3",   "",   "3", },
-	{  "4",   0,    0,    0,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "4",   "",   "4", },
-	{  "5",   0,    0,    0,   -1,    1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "5",   "",   "5", },
-	{  "6",   1,    1,   14,  .70,    2,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "6",   "",   "6", },
+    {  "3",   0,    0,    3,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "3",   "",   "3", },
+	{  "4",   0,    0,    3,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "4",   "",   "4", },
+	{  "5",   0,    0,    3,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "5",   "",   "5", },
+	{  "6",   0,    0,    3,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "6",   "",   "6", },
 	{  "7",   1,    1,   10,  .60,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "7",   "",   "7", },
 	{  "8",   1,    1,   07,  .70,    1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "8",   "",   "8", },
 	{  "9",   1,    1,    3,  .50,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "9",   "",   "9", },
+
+
+//{  "1",   0,    0,    3,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "1",   "",   "1", },
+//{  "2",   0,    0,    3,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "2",   "",   "2", },
+//{  "3",   0,    0,    9,   -1,    1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "3",   "",   "3", },
+//{  "4",   0,    0,    0,   -1,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "4",   "",   "4", },
+//{  "5",   0,    0,    0,   -1,    1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "5",   "",   "5", },
+//{  "6",   1,    1,   14,  .70,    2,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "6",   "",   "6", },
+//{  "7",   1,    1,   10,  .60,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "7",   "",   "7", },
+//{  "8",   1,    1,   07,  .70,    1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "8",   "",   "8", },
+//{  "9",   1,    1,    3,  .50,   -1,   -1,   -1, SchemeWsNorm, SchemeWsVisible, SchemeWsSel, SchemeWsOcc, "9",   "",   "9", },
+
+
+
+
+
 };
 
 /*  
@@ -208,25 +224,25 @@ static const int enablegaps  = 1;    /* whether gaps are enabled by default or n
 
 /* layout(s) */
 static const Layout layouts[] = {
-	/*     symbol       arrange function, {nmaster, nstack, layout,                master axis,         stack axis,          2nd axis,     symbol    func } */
-	/*00*/{ " []=",      flextile,         { -1,     -1, SPLIT_VERTICAL,            TOP_TO_BOTTOM,       TOP_TO_BOTTOM,            0,        NULL } }, // default tile layout
-	/*01*/{ " |||",      flextile,         { -1,     -1, NO_SPLIT,                  LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // columns
-	/*02*/{ " ===",      flextile,         { -1,     -1, NO_SPLIT,                  TOP_TO_BOTTOM,       TOP_TO_BOTTOM,            0,        NULL } }, // rows
-	/*03*/{ " [M]",      flextile,         { -1,     -1, NO_SPLIT,                  MONOCLE,             MONOCLE,                  0,        NULL } }, // monocle
-	/*04*/{ " ||=",      flextile,         { -1,     -1, SPLIT_VERTICAL,            LEFT_TO_RIGHT,       TOP_TO_BOTTOM,            0,        NULL } }, // columns (col) layout
-	/*05*/{ " >M>",      flextile,         { -1,     -1, FLOATING_MASTER,           LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // floating master
-	/*06*/{ " [D]",      flextile,         { -1,     -1, SPLIT_VERTICAL,            TOP_TO_BOTTOM,       MONOCLE,                  0,        NULL } }, // deck
-	/*07*/{ " TTT",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          LEFT_TO_RIGHT,       LEFT_TO_RIGHT,            0,        NULL } }, // bstack
-	/*08*/{ " ===",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          LEFT_TO_RIGHT,       TOP_TO_BOTTOM,            0,        NULL } }, // bstackhoriz
-	/*09*/{ " ==#",      flextile,         { -1,     -1, SPLIT_HORIZONTAL,          TOP_TO_BOTTOM,       GAPPLESSGRID_CFACTS,      0,        NULL } }, // bstackgrid
+	/*     symbol       arrange function, {nmaster, nstack, layout,       master axis,     stack axis,              2nd axis,  symbol    func } */
+	/*00*/{ " []=",      flextile,  { -1,  -1, SPLIT_VERTICAL,            TOP_TO_BOTTOM,   TOP_TO_BOTTOM,            0,        NULL } }, // default tile layout
+	/*01*/{ " |||",      flextile,  { -1,  -1, NO_SPLIT,                  LEFT_TO_RIGHT,   LEFT_TO_RIGHT,            0,        NULL } }, // columns
+	/*02*/{ " ===",      flextile,  { -1,  -1, NO_SPLIT,                  TOP_TO_BOTTOM,   TOP_TO_BOTTOM,            0,        NULL } }, // rows
+	/*03*/{ " [M]",      flextile,  { -1,  -1, NO_SPLIT,                  MONOCLE,         MONOCLE,                  0,        NULL } }, // monocle
+	/*04*/{ " ||=",      flextile,  { -1,  -1, SPLIT_VERTICAL,            LEFT_TO_RIGHT,   TOP_TO_BOTTOM,            0,        NULL } }, // columns (col) layout
+	/*05*/{ " >M>",      flextile,  { -1,  -1, FLOATING_MASTER,           LEFT_TO_RIGHT,   LEFT_TO_RIGHT,            0,        NULL } }, // floating master
+	/*06*/{ " [D]",      flextile,  { -1,  -1, SPLIT_VERTICAL,            TOP_TO_BOTTOM,   MONOCLE,                  0,        NULL } }, // deck
+	/*07*/{ " TTT",      flextile,  { -1,  -1, SPLIT_HORIZONTAL,          LEFT_TO_RIGHT,   LEFT_TO_RIGHT,            0,        NULL } }, // bstack
+	/*08*/{ " ===",      flextile,  { -1,  -1, SPLIT_HORIZONTAL,          LEFT_TO_RIGHT,   TOP_TO_BOTTOM,            0,        NULL } }, // bstackhoriz
+	/*09*/{ " ==#",      flextile,  { -1,  -1, SPLIT_HORIZONTAL,          TOP_TO_BOTTOM,   GAPPLESSGRID_CFACTS,      0,        NULL } }, // bstackgrid
 
-	/*10*/{ " |M|",      flextile,         { -1,     -1, SPLIT_CENTERED_VERTICAL,   LEFT_TO_RIGHT,       TOP_TO_BOTTOM, TOP_TO_BOTTOM,       NULL } }, // centeredmaster
-	/*11*/{ " -M-",      flextile,         { -1,     -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM,       LEFT_TO_RIGHT, LEFT_TO_RIGHT,       NULL } }, // centeredmaster horiz
+	/*10*/{ " |M|",      flextile,  { -1,  -1, SPLIT_CENTERED_VERTICAL,   LEFT_TO_RIGHT,   TOP_TO_BOTTOM, TOP_TO_BOTTOM,       NULL } }, // centeredmaster
+	/*11*/{ " -M-",      flextile,  { -1,  -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM,   LEFT_TO_RIGHT, LEFT_TO_RIGHT,       NULL } }, // centeredmaster horiz
 
-	/*12*/{ " :::",      flextile,         { -1,     -1, NO_SPLIT,                  GAPPLESSGRID_CFACTS, GAPPLESSGRID_CFACTS,      0,        NULL } }, // gappless grid
-	/*13*/{ " [\\]",     flextile,         { -1,     -1, NO_SPLIT,                  DWINDLE_CFACTS,      DWINDLE_CFACTS,           0,        NULL } }, // fibonacci dwindle
-	/*14*/{ " (@)",      flextile,         { -1,     -1, NO_SPLIT,                  SPIRAL_CFACTS,       SPIRAL_CFACTS,            0,        NULL } }, // fibonacci spiral
-	/*15*/{ " [T]",      flextile,         { -1,     -1, SPLIT_VERTICAL,            LEFT_TO_RIGHT,       TATAMI_CFACTS,            0,        NULL } }, // tatami mats
+	/*12*/{ " :::",      flextile,  { -1,  -1, NO_SPLIT,                  GAPPLESSGRID_CFACTS, GAPPLESSGRID_CFACTS,      0,        NULL } }, // gappless grid
+	/*13*/{ " [\\]",     flextile,  { -1,  -1, NO_SPLIT,                  DWINDLE_CFACTS,      DWINDLE_CFACTS,           0,        NULL } }, // fibonacci dwindle
+	/*14*/{ " (@)",      flextile,  { -1,  -1, NO_SPLIT,                  SPIRAL_CFACTS,       SPIRAL_CFACTS,            0,        NULL } }, // fibonacci spiral
+	/*15*/{ " [T]",      flextile,  { -1,  -1, SPLIT_VERTICAL,            LEFT_TO_RIGHT,       TATAMI_CFACTS,            0,        NULL } }, // tatami mats
     /*16*/{ " ><>",      NULL,             {0} },    /* no layout function means floating behavior */
 	/*17*/{ NULL,       NULL,             {0} },    /* end of layouts marker for cyclelayouts */
 };

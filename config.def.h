@@ -134,7 +134,7 @@ static unsigned long functionality = 0
 /*  {{{ Bar indicator length for active windows */
 static int flexwintitle_masterweight     = 30; // master weight compared to hidden and floating window titles
 static int flexwintitle_stackweight      = 10;  // stack weight compared to hidden and floating window titles
-static int flexwintitle_hiddenweight     = 0;  // hidden window title weight
+static int flexwintitle_hiddenweight     = 8;  // hidden window title weight
 static int flexwintitle_floatweight       = 0;  // floating window title weight, set to 0 to not show floating windows
 static int flexwintitle_separator        = 0;  // width of client separator
 /*  }}} */
@@ -196,8 +196,8 @@ static const Rule clientrules[] = {
 	{ .instance = "spterm (e)", .scratchkey = 'e', .flags = Floating },
 	{ .instance = "spterm (r)", .scratchkey = 'r', .flags = Floating|Centered|AlwaysOnTop, .floatpos = "40% 40%" },
 
-	{ .instance = "spfm (a)", .scratchkey = 'a', .flags = Floating },
-	{ .instance = "spfm (s)", .scratchkey = 's', .flags = Floating },
+	
+    { .instance = "spfm (a)", .scratchkey = 'a', .flags = Floating },
 
     { .instance = "fzf", .flags = Floating|Centered|AlwaysOnTop },
 
@@ -210,6 +210,9 @@ static const Rule clientrules[] = {
 
 
    { .role = "GtkFileChooserDialog", .floatpos = "30% 30%", .flags = AlwaysOnTop|Centered },
+   { .role = "gimp-file-chooser", .floatpos = "30% 30%", .flags = AlwaysOnTop|Centered },
+
+
 
 	{ .class = "Gnome-terminal", .role = "gnome-terminal-preferences", .flags = Centered },
 	{ .class = "Diffuse"       , .workspace = "4", .flags = NoSwallow|SwitchWorkspace|RevertWorkspace },
@@ -557,12 +560,14 @@ static Button buttons[] = {
 
     { ClkPower,                  0,                       Button3,        spawn,            {.v = powermenu } },
 	
-    { ClkLtSymbol,               0,                       Button4,        setlayout,        {0} }, // toggles between current and previous layout
+//    { ClkLtSymbol,               0,                       Button4,        setlayout,        {0} }, // toggles between current and previous layout
+
+    { ClkLtSymbol,               MODKEY,                  Button1,        cyclelayout,      {.i = -1 } }, // cycle through the available layouts (in reverse)
 	{ ClkLtSymbol,               0,                       Button1,        cyclelayout,      {.i = +1 } }, // cycle through the available layouts
-	{ ClkLtSymbol,               0,                       Button5,        cyclelayout,      {.i = -1 } }, // cycle through the available layouts (in reverse)
-	{ ClkWinTitle,               0,                       Button1,        focuswin,         {0} }, // focus on the given client
+
+    { ClkWinTitle,               0,                       Button1,        focuswin,         {0} }, // focus on the given client
 	{ ClkWinTitle,               0,                       Button3,        showhideclient,   {0} }, // hide the currently selected client (or show if hidden)
-	{ ClkWinTitle,               0,                       Button2,        zoom,             {0} }, // moves the currently focused window to/from the master area (for tiled layouts)
+//	{ ClkWinTitle,               0,                       Button2,        zoom,             {0} }, // moves the currently focused window to/from the master area (for tiled layouts)
 	{ ClkStatusText,             0,                       Button1,        statusclick,      {.i = 1 } }, // sends mouse button presses to statusclick script when clicking on status modules
 	{ ClkStatusText,             0,                       Button8,        statusclick,      {.i = 2 } },
 	{ ClkStatusText,             0,                       Button3,        statusclick,      {.i = 3 } },
@@ -576,17 +581,17 @@ static Button buttons[] = {
 	{ ClkStatusText,             Shift,                   Button2,        statusclick,      {.i = 11 } },
 	{ ClkStatusText,             Shift,                   Button3,        statusclick,      {.i = 12 } },
 	{ ClkClientWin,              MODKEY,                  Button8,        markmouse,        {1} }, // toggles marking of clients under the mouse cursor for group action
-	{ ClkClientWin,              MODKEY,                  Button9,        markmouse,        {0} }, // unmarks clients under the mouse cursor
+//	{ ClkClientWin,              MODKEY,                  Button9,        markmouse,        {0} }, // unmarks clients under the mouse cursor
 	{ ClkClientWin,              MODKEY,                  Button1,        moveorplace,      {1} }, // moves a client window into a floating or tiled position depending on floating state
 	{ ClkClientWin,              MODKEY|Shift,            Button1,        movemouse,        {0} }, // moves a floating window, if the window is tiled then it will snap out to become floating
 	{ ClkClientWin,              MODKEY|Alt,              Button2,        togglefloating,   {0} }, // toggles between tiled and floating arrangement for given client
 	{ ClkClientWin,              MODKEY,                  Button3,        resizeorcfacts,   {0} }, // change the size of a floating client window or adjust cfacts (dragcfact) when tiled
 	{ ClkClientWin,              MODKEY|Shift,            Button3,        resizemouse,      {0} }, // change the size of a floating client window
-	{ ClkClientWin,              0,                       Button8,        movemouse,        {0} }, // move a client window using extra mouse buttons (previous)
-	{ ClkClientWin,              0,                       Button9,        resizemouse,      {0} }, // resize a client window using extra mouse buttons (next)
+//	{ ClkClientWin,              0,                       Button8,        movemouse,        {0} }, // move a client window using extra mouse buttons (previous)
+//	{ ClkClientWin,              0,                       Button9,        resizemouse,      {0} }, // resize a client window using extra mouse buttons (next)
 	{ ClkClientWin,              MODKEY,                  Button2,        zoom,             {0} }, // moves the currently focused window to/from the master area (for tiled layouts)
-	{ ClkClientWin,              MODKEY|Ctrl,             Button1,        dragmfact,        {0} }, // dynamically change the size of the master area compared to the stack area(s)
-	{ ClkRootWin,                MODKEY|Ctrl,             Button1,        dragmfact,        {0} }, // dynamically change the size of the master area compared to the stack area(s)
+//	{ ClkClientWin,              MODKEY|Ctrl,             Button1,        dragmfact,        {0} }, // dynamically change the size of the master area compared to the stack area(s)
+//	{ ClkRootWin,                MODKEY|Ctrl,             Button1,        dragmfact,        {0} }, // dynamically change the size of the master area compared to the stack area(s)
 	{ ClkClientWin,              MODKEY,                  Button4,        inplacerotate,    {.i = +1 } }, // rotate clients within the respective area (master, primary stack, secondary stack) clockwise
 	{ ClkClientWin,              MODKEY,                  Button5,        inplacerotate,    {.i = -1 } }, // rotate clients within the respective area (master, primary stack, secondary stack) counter-clockwise
 	{ ClkClientWin,              MODKEY|Shift,            Button4,        rotatestack,      {.i = +1 } }, // rotate all clients (clockwise)
@@ -594,7 +599,7 @@ static Button buttons[] = {
 	{ ClkWorkspaceBar,           0,                       Button1,        viewws,           {0} }, // view the workspace by clicking on workspace icon
 	{ ClkWorkspaceBar,           MODKEY,                  Button1,        movews,           {0} }, // sends (moves) the currently focused client to given workspace
 	{ ClkWorkspaceBar,           MODKEY|Shift|Ctrl,       Button1,        swapws,           {0} }, // swaps all clients on current workspace with that of the given workspace
-	{ ClkWorkspaceBar,           0,                       Button3,        enablews,         {0} }, // enables the workspace in addition to other workspaces
+//	{ ClkWorkspaceBar,           0,                       Button3,        enablews,         {0} }, // enables the workspace in addition to other workspaces
 	{ ClkWorkspaceBar,           0,                       Button4,        viewwsdir,        {.i = +2 } }, // view the next workspace right of current workspace that has clients (on the current monitor)
 	{ ClkWorkspaceBar,           0,                       Button5,        viewwsdir,        {.i = -2 } }, // view the next workspace left of current workspace that has clients (on the current monitor)
 	{ ClkWorkspaceBar,           MODKEY,                  Button2,        togglepinnedws,   {0} }, // toggles the pinning of a workspace to the current monitor
